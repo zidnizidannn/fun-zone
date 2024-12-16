@@ -1,8 +1,8 @@
-# Fun Zone
+# Fun Zone!
 
 Welcome to the **Fun Zone**! This React app is designed for managing a team-based game with a built-in timer, score tracking, and a music player to keep the energy high. It's a perfect solution for competitive team games like quiz shows, sports events, or just a fun game night with friends!
 
----
+
 
 ## Features
 
@@ -13,7 +13,11 @@ Welcome to the **Fun Zone**! This React app is designed for managing a team-base
 - **Real-time Updates**: The Fun Zone is updated in real-time using React's state management and animations.
 - **Hotkeys**: Add points to the teams by pressing "A" for Team 1 and "L" for Team 2.
 
----
+
+## Demo
+
+For demo click [here](https://fun-zone-delta.vercel.app/).
+
 
 ## Installation
 
@@ -40,7 +44,6 @@ To get started with the project, follow these steps:
    ```
 
 
----
 
 ## Key Features
 
@@ -50,7 +53,6 @@ To get started with the project, follow these steps:
 - **Framer Motion**: Smooth animations when teams are selected and scores are updated.
 - **Modals**: Easy-to-use modal to add new teams to the game.
   
----
 
 ## Usage
 
@@ -60,7 +62,6 @@ To get started with the project, follow these steps:
 4. **Timer Control**: Pause and resume the timer at any time. The timer is shown in minutes and seconds.
 5. **Music Control**: Play random background music to enhance the atmosphere. You can toggle the music using the volume button.
 
----
 
 ## Contribute
 
