@@ -80,6 +80,9 @@ const GameInterface = () => {
         }
     };
 
+    const countdownAudioRef = React.useRef(new Audio("/sound/countdown.MP3"));
+    const [isCountdownPlaying, setIsCountdownPlaying] = useState(false);
+
     const resetGame = () => {
         setCurrentTeams({
             team1: { name: "", score: 0 },
@@ -87,6 +90,9 @@ const GameInterface = () => {
         });
         setIsGameActive(false);
         setTimeRemaining(15);
+        setIsCountdownPlaying(false);
+        countdownAudioRef.current.pause();
+        countdownAudioRef.current.currentTime = 0;
     };
 
     const [isPaused, setIsPaused] = useState(false);
@@ -95,7 +101,13 @@ const GameInterface = () => {
         let interval;
         if (isGameActive && timeRemaining > 0 && !isPaused) {
             interval = setInterval(() => {
-                setTimeRemaining((prev) => prev - 1);
+                setTimeRemaining((prev) => {
+                if (prev === 11 && !isCountdownPlaying) {
+                        countdownAudioRef.current.play();
+                        setIsCountdownPlaying(true);
+                    }
+                    return prev - 1;
+                });
             }, 1000);
         } else if (timeRemaining === 0) {
             setIsGameActive(false);
@@ -104,7 +116,16 @@ const GameInterface = () => {
     }, [isGameActive, timeRemaining, isPaused]);
 
     const toggleTimer = () => {
-        setIsPaused((prev) => !prev);
+        setIsPaused((prev) => {
+            if (!prev) {
+                countdownAudioRef.current.pause();
+                setIsCountdownPlaying(false);
+            } else if (timeRemaining <= 10) {
+                countdownAudioRef.current.play();
+                setIsCountdownPlaying(true);
+            }
+            return !prev;
+        });
     };
 
     useEffect(() => {
